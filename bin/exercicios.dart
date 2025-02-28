@@ -1,12 +1,20 @@
 import 'dart:io';
 
 void main() {
-  List<String> categorias = <String>["eletronicos","alimentos","vestuario","livros"];
-  print('Digite a categoria do produto (eletronicos, alimentos, vestuario, livros):');
-  var categoria = stdin.readLineSync();
-  if(categorias.contains(categoria)) {
-    print('Categoria válida: ' + '$categoria');
+  List<String> tiposArquivo = <String>["pdf","jpg","png","docx"];
+  
+  void verificarArquivo() {
+  print('Informe o tipo do arquivo (pdf, jpg, png, docx): ');
+  var tipoArquivo = stdin.readLineSync();
+  
+  if(tiposArquivo.contains(tipoArquivo)) {
+    print('Arquivo permitido: ' + '$tipoArquivo');
   } else {
-    print('Categoria inválida.');
+    print('Tipo de arquivo não suportado, tente novamente');
+    verificarArquivo();
   }
+  }
+
+verificarArquivo();
 }
+
