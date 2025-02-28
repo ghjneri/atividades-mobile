@@ -1,20 +1,17 @@
 import 'dart:io';
 
 void main() {
-  List<String> tiposArquivo = <String>["pdf","jpg","png","docx"];
+  List<String> metodosPagamento = <String>["cartao","boleto","paypal","pix"];
   
-  void verificarArquivo() {
-  print('Informe o tipo do arquivo (pdf, jpg, png, docx): ');
-  var tipoArquivo = stdin.readLineSync();
-  
-  if(tiposArquivo.contains(tipoArquivo)) {
-    print('Arquivo permitido: ' + '$tipoArquivo');
+  void validarMetodoPagamento() {
+  print('Digite a categoria do produto (cartão, boleto, paypal ou pix): ');
+  var metodoPagamento = stdin.readLineSync();
+  if(metodosPagamento.contains(metodoPagamento)) {
+    print('Método de pagamento validado');
   } else {
-    print('Tipo de arquivo não suportado, tente novamente');
-    verificarArquivo();
-  }
-  }
-
-verificarArquivo();
+    print('o método de pagamento não é valido, tente novamente.');
+    validarMetodoPagamento();
+  };
+  };
+  validarMetodoPagamento();
 }
-
