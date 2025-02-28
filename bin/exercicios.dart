@@ -1,17 +1,25 @@
 import 'dart:io';
 
 void main() {
-  List<String> metodosPagamento = <String>["cartao","boleto","paypal","pix"];
+  double saldoConta = 0.0;
   
-  void validarMetodoPagamento() {
-  print('Digite a categoria do produto (cartão, boleto, paypal ou pix): ');
-  var metodoPagamento = stdin.readLineSync();
-  if(metodosPagamento.contains(metodoPagamento)) {
-    print('Método de pagamento validado');
+  void depositar() {
+    print('Informe o valor a ser depositado: ');
+    var valor = double.parse(stdin.readLineSync()!);
+    saldoConta += valor;
+    print('O saldo atual da conta é: ' + '$saldoConta');
+  };
+  
+  void operarConta() {
+  print('Informe a operação a ser efetuada (deposito, retirada, transferencia, pagamento): ');
+  var operacao = stdin.readLineSync();
+  if(operacao == 'deposito') {
+    depositar();
   } else {
-    print('o método de pagamento não é valido, tente novamente.');
-    validarMetodoPagamento();
+    print('A operação não está disponível no momento. Tente novamente mais tarde.');
+    operarConta();
   };
   };
-  validarMetodoPagamento();
+  
+  operarConta();
 }
